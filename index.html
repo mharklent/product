@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="">
+</head>
+<body>
+<div class="container">
+	<label>Product</label>
+	<input type="text" name="" id="product">
+	<label>Price</label>
+	<input type="text" name="" id="price">
+	<label>Quantity</label>
+	<input type="text" name="" id="quantity">
+	<h3 id="total"></h3>
+	<button id="additem" class="btn btn-primary">ADD</button>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Product</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody id="data">
+
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript">
+	var id=1;
+	
+	var btnadditem=document.getElementById('additem');
+	btnadditem.addEventListener('click',function(){
+		var content=document.getElementById('data');
+		
+		var product=document.getElementById('product').value;
+		var price=document.getElementById('price').value;
+		var quantity=document.getElementById('quantity').value;
+		var total=document.getElementById('total').value;
+		var total=(price*quantity);
+		document.getElementById('total').innerHTML=total;
+		if(isNaN(price)==false&&isNaN(quantity)==false)
+		{
+			document.getElementById('total').innerHTML=total;
+		}
+		else
+		{
+			document.getElementById('total').innerHTML="Invalid";
+		}
+		var newentry="<tr>"+"<td>"+id+"</td>"+"<td>"+product+"</td>"+"<td>"+price+"</td>"+"<td>"+quantity+"</td>"+"<td>"+total+"</td>"+"</tr>";
+		content.insertAdjacentHTML('afterbegin',newentry);
+		id++;
+	});
+</script>
+</body>
+</html>
